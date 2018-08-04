@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Website Header Retriever</string>
+    <string name="enter_website_address">Website Address</string>
+    <string name="submit">Submit</string>
+</resources>
