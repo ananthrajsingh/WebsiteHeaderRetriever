@@ -32,13 +32,11 @@ public class HeaderActivity extends AppCompatActivity {
         mProgressBar.setVisibility(View.VISIBLE);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        /* If user typed for eg. "fb.com" substring will throw error if this condition isn't checked*/
+        /* If user typed for eg. "mi.com", substring will throw error if this condition isn't checked*/
         if (mAddress.length() > 7) {
             String protocol = mAddress.substring(0, 7);
             if (protocol.equals("https:/") || protocol.equals("http://")) {
                 webView.loadUrl(mAddress);
-            } else {
-                webView.loadUrl("https://" + mAddress);
             }
         }
         else {
@@ -55,8 +53,8 @@ public class HeaderActivity extends AppCompatActivity {
             public void onLoadResource(WebView view, String url) {
                 try {
                     webView.loadUrl("javascript:(window.onload = function() { " +
-                            "(elem1 = document.getElementsByTagName('body')[0]); elem1.parentNode.removeChild(elem1); " +
-//                            "(elem2 = document.getElementById('id2')); elem2.parentNode.removeChild(elem2); " +
+                            "(elem1 = document.getElementsByTagName('main')[0]); elem1.parentNode.removeChild(elem1); " +
+                            "(elem2 = document.getElementsByTagName('footer')[0]); elem2.parentNode.removeChild(elem2); " +
                             "})()");
                 } catch (Exception e) {
                     e.printStackTrace();
